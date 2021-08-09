@@ -14,7 +14,8 @@ import javax.annotation.Resource;
 @Slf4j
 public class PaymentController {
 
-    @Resource
+    /*@Resource*/
+    @Autowired
     private PaymentService paymentService;
 
     @Value("${server.port}")
@@ -22,6 +23,7 @@ public class PaymentController {
 
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment) {
+    /*public CommonResult create(Payment payment) {*/
         int result = paymentService.create(payment);
         log.info("*****插入结果：" + result);
         if (result > 0) {
